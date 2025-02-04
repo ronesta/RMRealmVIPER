@@ -7,14 +7,11 @@
 
 import Foundation
 
-final class NetworkManager {
-    static let shared = NetworkManager()
+final class NetworkManager: NetworkManagerProtocol {
     var dataCounter = 1
     var imageCounter = 1
 
     private let urlString = "https://rickandmortyapi.com/api/character"
-
-    private init() {}
 
     func getCharacters(completion: @escaping ([Character]?, Error?) -> Void) {
         guard let url = URL(string: urlString) else {

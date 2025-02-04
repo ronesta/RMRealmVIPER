@@ -9,13 +9,7 @@ import Foundation
 import UIKit
 import RealmSwift
 
-final class StorageManager: NSObject {
-    static let shared = StorageManager()
-
-    private override init() {
-        super.init()
-    }
-
+final class StorageManager: NSObject, StorageManagerProtocol {
     private var realm: Realm {
         do {
             return try Realm()
