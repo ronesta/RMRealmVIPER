@@ -23,4 +23,8 @@ final class CharacterPresenter: CharacterPresenterProtocol {
     func charactersFetchFailed(with error: Error) {
         view?.displayError("Failed to load characters: \(error.localizedDescription)")
     }
+
+    func fetchImageData(for characterId: Int) -> Data? {
+        interactor?.getImageData(for: characterId)
+    }
 }

@@ -9,15 +9,11 @@ import Foundation
 import UIKit
 
 final class CharacterTableViewDataSource: NSObject, CharacterDataSourceProtocol {
-    var networkManager: NetworkManagerProtocol?
-    var storageManager: StorageManagerProtocol?
+    private let presenter: CharacterPresenterProtocol
     var characters = [RealmCharacter]()
 
-    init(networkManager: NetworkManagerProtocol?,
-         storageManager: StorageManagerProtocol?
-    ) {
-        self.networkManager = networkManager
-        self.storageManager = storageManager
+    init(presenter: CharacterPresenterProtocol) {
+        self.presenter = presenter
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,7 +29,7 @@ final class CharacterTableViewDataSource: NSObject, CharacterDataSourceProtocol 
 
         let character = characters[indexPath.row]
 
-        guard let imageData = storageManager?.fetchImageData(forCharacterId: character.id),
+        guard let imageData = presenter.fetchImageData(for: character.id),
               let image = UIImage(data: imageData) else {
             return cell
         }

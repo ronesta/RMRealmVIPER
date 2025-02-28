@@ -8,8 +8,8 @@
 import Foundation
 
 final class NetworkManager: NetworkManagerProtocol {
-    var dataCounter = 1
-    var imageCounter = 1
+    private var dataCounter = 1
+    private var imageCounter = 1
 
     private let urlString = "https://rickandmortyapi.com/api/character"
 

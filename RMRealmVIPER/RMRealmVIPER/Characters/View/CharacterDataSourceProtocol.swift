@@ -10,5 +10,4 @@ import UIKit
 
 protocol CharacterDataSourceProtocol: UITableViewDataSource {
     var characters: [RealmCharacter] { get set }
-    var networkManager: NetworkManagerProtocol? { get set }
 }
